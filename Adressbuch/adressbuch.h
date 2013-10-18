@@ -7,6 +7,7 @@
                   aendern von Personen
                   und zum ausgeben der Adressdaten einer Person
 */
+#include <stdlib.h>
 
 /*! \brief Struktur von Adressdaten
  */
@@ -34,33 +35,49 @@ typedef struct
 /*! \brief listet die Namen der Personen
  *
  * \param 
+ *
+ * \param
  */
-void list(PERSON **people);
+void list(size_t p_size, const PERSON **people);
 
 /*! \brief liest einen neuen Eintrag von der Commanline ein
  *
  * \param
+ *
+ * \param
+ *
+ * \return
  */
-PERSON* readin(PERSON **people);
+PERSON* readin(size_t *p_size, PERSON **people);
 
 /*! \brief entfernt eine Person aus dem Adressbuch
  *
  * \param
  *
  * \param
+ *
+ * \param
+ *
+ * \return
  */
-bool_t remove(PERSON **people, PERSON *person);
+bool_t remove(size_t *p_size, PERSON **people, PERSON *person);
 
 /*! \brief aendert eine Person, fragt Benutzer nach aenderungswuenschen
  *
  * \param
  *
  * \param
+ *
+ * \param
+ *
+ * \return
  */
-PERSON* modify(PERSON **people, PERSON *person);
+PERSON* modify(size_t *p_size, PERSON **people, PERSON *person);
 
 /*! \brief zeigt alle Daten zu einer Person an
  *
  * \param
+ *
+ * \return
  */
-bool_t show(PERSON *person)
+bool_t show(PERSON *person);
