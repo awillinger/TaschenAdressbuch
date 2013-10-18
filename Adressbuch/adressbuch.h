@@ -9,6 +9,11 @@
 */
 #include <stdlib.h>
 
+/* boolean typ */ 
+typedef int bool;
+#define TRUE 1
+#define FALSE 0
+
 /*! \brief Struktur von Adressdaten
  */
 typedef struct 
@@ -38,7 +43,7 @@ typedef struct
  *
  * \param
  */
-void list(size_t p_size, const PERSON **people);
+void list_p(const size_t p_size, const PERSON **people);
 
 /*! \brief liest einen neuen Eintrag von der Commanline ein
  *
@@ -48,7 +53,7 @@ void list(size_t p_size, const PERSON **people);
  *
  * \return
  */
-PERSON* readin(size_t *p_size, PERSON **people);
+PERSON* readin_p(size_t *p_size, PERSON **people);
 
 /*! \brief entfernt eine Person aus dem Adressbuch
  *
@@ -60,7 +65,7 @@ PERSON* readin(size_t *p_size, PERSON **people);
  *
  * \return
  */
-bool_t remove(size_t *p_size, PERSON **people, PERSON *person);
+bool remove_p(size_t *p_size, PERSON **people, PERSON *person);
 
 /*! \brief aendert eine Person, fragt Benutzer nach aenderungswuenschen
  *
@@ -72,7 +77,7 @@ bool_t remove(size_t *p_size, PERSON **people, PERSON *person);
  *
  * \return
  */
-PERSON* modify(size_t *p_size, PERSON **people, PERSON *person);
+PERSON* modify_p(size_t *p_size, PERSON **people, PERSON *person);
 
 /*! \brief zeigt alle Daten zu einer Person an
  *
@@ -80,4 +85,8 @@ PERSON* modify(size_t *p_size, PERSON **people, PERSON *person);
  *
  * \return
  */
-bool_t show(PERSON *person);
+bool show_p(const PERSON *person);
+
+
+/*! \brief buffer leeren */
+void clear_buffer(void);

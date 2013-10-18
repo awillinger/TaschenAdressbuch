@@ -8,13 +8,13 @@
 */
 #include <stdio.h>
 #include <stdlib.h>
-#include 'adressbuch.h'
+#include "adressbuch.h"
 
 int main(int argc, char** argv)
 {
     PERSON **people = NULL;
     size_t p_size = 0;
-    bool_t stop = false;
+    bool stop = FALSE;
     while(!stop)
     {
         printf("Was wollen sie machen?\n");
@@ -22,44 +22,60 @@ int main(int argc, char** argv)
     return EXIT_SUCCESS;
 }
 
-void list(const size_t *p_size, const PERSON **people)
+void list_p(const size_t p_size, const PERSON **people)
 {
     size_t i;
-    for(i = 0; i < *p_size; ++i)
+    for(i = 0; i < p_size; ++i)
     {
         if(*(people+i) != NULL 
-        &&  (**(people+i)).fname != NULL 
-        &&  (**(people+i)).sname != NULL)
+        &&  (*(people+i))->fname != NULL 
+        &&  (*(people+i))->sname != NULL)
         {
-            printf("%s %s\n", *(*people+i).fname, *(*people+i).sname);
+            printf("%s %s\n", (*people+i)->fname, (*people+i)->sname);
         }
     }
 }
 
-PERSON* readin(size_t *p_size, PERSON **people)
+PERSON* readin_p(size_t *p_size, PERSON **people)
 {
-    PERSON *person = NULL;
-    person = malloc(sizeof(PERSON));
-    if(person == NULL)
+    PERSON *pperson = NULL;
+    pperson = malloc(sizeof(PERSON));
+    if(pperson == NULL)
     {
-        return NULL;
+        printf("Kein Speicher verfuegbar um pperson zu allokieren.\n");
     }
-    printf("\n");
 
-    return person;
+    printf("Vorname:  ");
+    scanf("%s", (*pperson).fname);
+    clear_buffer();
+
+    printf("Nachname: ");
+    scanf("%s", (*pperson).sname);
+    clear_buffer();
+
+
+    return pperson;
 }
 
-bool_t remove(size_t *p_size, PERSON **people, PERSON *person)
+bool remove_p(size_t *p_size, PERSON **people, PERSON *person)
 {
 
 }
 
-PERSON* modify(size_t *p_size, PERSON **people, PERSON *person)
+PERSON* modify_p(size_t *p_size, PERSON **people, PERSON *person)
 {
 
 }
 
-bool_t show(const PERSON *person)
+bool show_p(const PERSON *person)
 {
 
+}
+
+void clear_buffer()
+{
+    char c;
+
+    // alle zeichen aus dem Puffer lesen, dadurch wird er geleert
+    while((c = getchar()) != EOF && c != '\n');
 }
