@@ -16,7 +16,7 @@ Aufwandsschätzung
 +--------------+---------------+---------+
 |= Schritt     | Geplante Zeit | Aufwand |
 +--------------+---------------+---------+
-| 1. Schritt   | 00:15h		   | Gering  |
+| 1. Schritt   | 00:15h        | Gering  |
 +--------------+---------------+---------+
 
 Zeitaufzeichnung
