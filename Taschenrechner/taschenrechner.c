@@ -108,7 +108,6 @@ int multiplikation(int a, int b)
 void clear_buffer()
 {
 	char c;
-	fflush(stdout);
 
 	// alle zeichen aus dem Puffer lesen, dadurch wird er geleert
 	while((c = getchar()) != EOF && c != '\n')
