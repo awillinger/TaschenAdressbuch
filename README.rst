@@ -6,7 +6,9 @@ Aufgabenstellung
 ^^^^^^^^^^^^^^^^
 Es soll ein einfacher Taschenrechner implementiert werden, welche die Operationen (Add, Sub, Mul, Div) in einem FP-Array speichert.
 Die Operations-Header:
+
 .. code:: c
+
     int addition(int,int);
     int subtraktion(int,int);
     int division(int,int);
