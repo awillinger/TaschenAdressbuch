@@ -44,7 +44,7 @@ int main(int argc, char** argv)
 		scanf("%c", &type);
 		clear_buffer();
 
-		if(type == 'b')
+		if(type == 'b' ||type == 'B')
 		{
 			break;
 		}
@@ -62,15 +62,19 @@ int main(int argc, char** argv)
 		switch(type)
 		{
 		case 'a':
+		case 'A':
 			printf("Das Ergebnis der Addition ist: %d", (*fp[0])(x, y));
 			break;
 		case 's':
+		case 'S':
 			printf("Das Ergebnis der Subtraktion ist: %d", (*fp[1])(x, y));
 			break;
 		case 'd':
+		case 'D':
 			printf("Das Ergebnis der Division ist: %d", (*fp[2])(x, y));
 			break;
 		case 'm':
+		case 'M':
 			printf("Das Ergebnis der Multiplikation ist: %d", (*fp[3])(x, y));
 			break;
 		default:
@@ -109,7 +113,6 @@ void clear_buffer()
 {
 	char c;
 
-	// alle zeichen aus dem Puffer lesen, dadurch wird er geleert
 	while((c = getchar()) != EOF && c != '\n')
 	{
 		;
