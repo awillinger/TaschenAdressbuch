@@ -8,6 +8,7 @@
 */
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "adressbuch.h"
 
 int main(int argc, char** argv)
@@ -18,7 +19,7 @@ int main(int argc, char** argv)
     readin_p(&p_size, people);
 
     printf("Was wollen sie machen?\n");
-    help;
+    help();
     while(!stop)
     {
 
@@ -37,8 +38,8 @@ void help(void)
     printf("add       - Fuegt eine neue Person hinzu.\n");
     printf("rm index  - Entfernt die Person am angegebenen Index.\n");
     printf("mod index - Aendert die Person am angegebenen Index.\n");
-    printf("show index- Zeigt alle Daten zu der Person am angegebenen Index.
-        ");
+    printf("show index- Zeigt alle Daten zu der Person am angegebenen Index.\
+        \n");
 
 }
 
@@ -51,7 +52,7 @@ void list_p(const size_t p_size, const PERSON **people)
         &&  (*(people+i))->fname != NULL 
         &&  (*(people+i))->sname != NULL)
         {
-            printf("[%d] %s %s\n", i, (*people+i)->fname, (*people+i)->sname);
+            printf("[%zu] %s %s\n", i, (*people+i)->fname, (*people+i)->sname);
         }
     }
 }
@@ -107,7 +108,7 @@ PERSON* readin_p(size_t *p_size, PERSON **people)
 
     //pperson zu people hinzufuegen
     people = realloc(people, sizeof(people) * ((int)++p_size));
-    people[(int)p_size-1] = &pperson; //Im Falle einer Seg Fault hier suchen
+    people[(int)p_size-1] = pperson; //Im Falle einer Seg Fault hier suchen
 
     return pperson;
 }
@@ -117,7 +118,7 @@ bool remove_p(size_t *p_size, PERSON **people, PERSON *person)
     int offset = 0;
     int i;
 
-    for(i = 0; i < p_size; ++i)
+    for(i = 0; i < *p_size; ++i)
     {
         if(person == people[i])
         {    
@@ -142,84 +143,84 @@ PERSON* modify_p(size_t *p_size, PERSON *person)
     printf("Aendern einer Person.\n");
     printf("Bei Eingaben die mit . beginnen wird der alte Wert behalten.\n");
 
-    printf("Vorname        [%s]: ", (*pperson).fname);
+    printf("Vorname        [%s]: ", (*person).fname);
     scanf("%s", chars64);
     clear_buffer();
     if('.' != chars64[0])
     {
-        memmove(&((*pperson).fname), chars64, 64);    
+        memmove(&((*person).fname), chars64, 64);    
     }
 
-    printf("Nachname       [%s]: ", (*pperson).sname);
+    printf("Nachname       [%s]: ", (*person).sname);
     scanf("%s", chars64);
     clear_buffer();
     if('.' != chars64[0])
     {
-        memmove(&((*pperson).sname), chars64, 64);    
+        memmove(&((*person).sname), chars64, 64);    
     }
 
-    printf("Telephonnummer [%s]: ", (*pperson).telephone);
+    printf("Telephonnummer [%s]: ", (*person).telephone);
     scanf("%s", chars24);
     clear_buffer();
     if('.' != chars24[0])
     {
-        memmove(&((*pperson).telephone), chars24, 24);    
+        memmove(&((*person).telephone), chars24, 24);    
     }
 
-    printf("Emailadresse   [%s]: ", (*pperson).email);
+    printf("Emailadresse   [%s]: ", (*person).email);
     scanf("%s", chars256);
     clear_buffer();
     if('.' != chars256[0])
     {
-        memmove(&((*pperson).email), chars256, 256);    
+        memmove(&((*person).email), chars256, 256);    
     }
 
-    printf("Strasse 1      [%s]: ", (*pperson).address.street_address_l1);
+    printf("Strasse 1      [%s]: ", (*person).address.street_address_l1);
     scanf("%s", chars64);
     clear_buffer();
     if('.' != chars64[0])
     {
-        memmove(&((*pperson).address.street_address_l1), chars64, 64);    
+        memmove(&((*person).address.street_address_l1), chars64, 64);    
     }
 
-    printf("Strasse 2      [%s]: ", (*pperson).address.street_address_l2);
+    printf("Strasse 2      [%s]: ", (*person).address.street_address_l2);
     scanf("%s", chars64);
     clear_buffer();
     if('.' != chars64[0])
     {
-        memmove(&((*pperson).address.street_address_l2), chars64, 64);    
+        memmove(&((*person).address.street_address_l2), chars64, 64);    
     }
 
-    printf("Stadt          [%s]: ", (*pperson).address.city);
+    printf("Stadt          [%s]: ", (*person).address.city);
     scanf("%s", chars64);
     clear_buffer();
     if('.' != chars64[0])
     {
-        memmove(&((*pperson).address.city), chars64, 64);    
+        memmove(&((*person).address.city), chars64, 64);    
     }
 
-    printf("Land           [%s]: ", (*pperson).address.country);
+    printf("Land           [%s]: ", (*person).address.country);
     scanf("%s", chars64);
     clear_buffer();
     if('.' != chars64[0])
     {
-        memmove(&((*pperson).address.country), chars64, 64);    
+        memmove(&((*person).address.country), chars64, 64);    
     }
 
-    printf("Staat          [%s]: ", (*pperson).address.state);
+    printf("Staat          [%s]: ", (*person).address.state);
     scanf("%s", chars64);
     clear_buffer();
     if('.' != chars64[0])
     {
-        memmove(&((*pperson).address.state), chars64, 64);    
+        memmove(&((*person).address.state), chars64, 64);    
     }
 
-    printf("Postleitzahl   [%s]: ", (*pperson).address.postal_code);
+    printf("Postleitzahl   [%s]: ", (*person).address.postal_code);
     scanf("%s", chars24);
     clear_buffer();
     if('.' != chars24[0])
     {
-        memmove(&((*pperson).address.postal_code), chars24, 24);    
+        memmove(&((*person).address.postal_code), chars24, 24);    
     }
 
     return person;
@@ -227,25 +228,25 @@ PERSON* modify_p(size_t *p_size, PERSON *person)
 
 void show_p(const PERSON *person)
 {
-    printf("Vorname       : %s\n", (*pperson).fname);
+    printf("Vorname       : %s\n", (*person).fname);
 
-    printf("Nachname      : %s\n", (*pperson).sname);
+    printf("Nachname      : %s\n", (*person).sname);
 
-    printf("Telephonnummer: %s\n", (*pperson).telephone);
+    printf("Telephonnummer: %s\n", (*person).telephone);
 
-    printf("Emailadresse  : %s\n", (*pperson).email);
+    printf("Emailadresse  : %s\n", (*person).email);
 
-    printf("Strasse 1     : %s\n", (*pperson).address.street_address_l1);
+    printf("Strasse 1     : %s\n", (*person).address.street_address_l1);
 
-    printf("Strasse 2     : %s\n", (*pperson).address.street_address_l2);
+    printf("Strasse 2     : %s\n", (*person).address.street_address_l2);
 
-    printf("Stadt         : %s\n", (*pperson).address.city);
+    printf("Stadt         : %s\n", (*person).address.city);
 
-    printf("Land          : %s\n", (*pperson).address.country);
+    printf("Land          : %s\n", (*person).address.country);
 
-    printf("Staat         : %s\n", (*pperson).address.state);
+    printf("Staat         : %s\n", (*person).address.state);
 
-    printf("Postleitzahl  : %s\n", (*pperson).address.postal_code);
+    printf("Postleitzahl  : %s\n", (*person).address.postal_code);
 }
 
 void clear_buffer()
