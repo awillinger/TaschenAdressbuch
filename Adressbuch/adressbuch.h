@@ -83,6 +83,10 @@ PERSON* modify_p(size_t *p_size, PERSON *person);
  */
 void show_p(const PERSON *person);
 
+/*! \brief zeigt alle Daten zu einer Person an
+ *
+ */
+void help(void);
 
 /*! \brief buffer leeren */
 void clear_buffer(void);

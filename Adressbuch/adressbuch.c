@@ -16,11 +16,30 @@ int main(int argc, char** argv)
     size_t p_size = 0;
     bool stop = FALSE;
     readin_p(&p_size, people);
+
+    printf("Was wollen sie machen?\n");
+    help;
     while(!stop)
     {
-        printf("Was wollen sie machen?\n");
+
+        printf("\n");
     }
     return EXIT_SUCCESS;
+}
+
+void help(void)
+{
+    printf("[ Hilfe ]\n");
+    printf("Diese Befehle stehen zur verfuegung:\n");
+    printf("help      - Zeigt diese Hilfestellung an.\n");
+    printf("list      - Listet alle eingetragenen Personen auf und zeigt \
+        ihren Index an.\n");
+    printf("add       - Fuegt eine neue Person hinzu.\n");
+    printf("rm index  - Entfernt die Person am angegebenen Index.\n");
+    printf("mod index - Aendert die Person am angegebenen Index.\n");
+    printf("show index- Zeigt alle Daten zu der Person am angegebenen Index.
+        ");
+
 }
 
 void list_p(const size_t p_size, const PERSON **people)
@@ -32,7 +51,7 @@ void list_p(const size_t p_size, const PERSON **people)
         &&  (*(people+i))->fname != NULL 
         &&  (*(people+i))->sname != NULL)
         {
-            printf("%s %s\n", (*people+i)->fname, (*people+i)->sname);
+            printf("[%d] %s %s\n", i, (*people+i)->fname, (*people+i)->sname);
         }
     }
 }
@@ -110,7 +129,8 @@ bool remove_p(size_t *p_size, PERSON **people, PERSON *person)
     p_size -= offset;
 
     free(person); //Person von ihren Qualen befreien
-    return offset ? TRUE : FALSE; //Wenn offset=0 wurde offensichtlich nichts geloescht
+    return offset ? TRUE : FALSE; //Wenn offset=0 wurde offensichtlich nichts 
+                                  //geloescht
 }
 
 PERSON* modify_p(size_t *p_size, PERSON *person)
