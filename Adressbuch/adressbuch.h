@@ -73,19 +73,15 @@ bool remove_p(size_t *p_size, PERSON **people, PERSON *person);
  *
  * \param
  *
- * \param
- *
  * \return
  */
-PERSON* modify_p(size_t *p_size, PERSON **people, PERSON *person);
+PERSON* modify_p(size_t *p_size, PERSON *person);
 
 /*! \brief zeigt alle Daten zu einer Person an
  *
  * \param
- *
- * \return
  */
-bool show_p(const PERSON *person);
+void show_p(const PERSON *person);
 
 
 /*! \brief buffer leeren */

@@ -98,19 +98,134 @@ bool remove_p(size_t *p_size, PERSON **people, PERSON *person)
     int offset = 0;
     int i;
 
-    for(i=0;;);
+    for(i = 0; i < p_size; ++i)
+    {
+        if(person == people[i])
+        {    
+            ++offset;
+        }
+        people[i - offset] = people[i]; 
+    }
 
-    return offset ? TRUE : FALSE;
+    p_size -= offset;
+
+    free(person); //Person von ihren Qualen befreien
+    return offset ? TRUE : FALSE; //Wenn offset=0 wurde offensichtlich nichts geloescht
 }
 
-PERSON* modify_p(size_t *p_size, PERSON **people, PERSON *person)
-{
+PERSON* modify_p(size_t *p_size, PERSON *person)
+{   
+    char chars24[24];
+    char chars64[64];
+    char chars256[256];
 
+    printf("Aendern einer Person.\n");
+    printf("Bei Eingaben die mit . beginnen wird der alte Wert behalten.\n");
+
+    printf("Vorname        [%s]: ", (*pperson).fname);
+    scanf("%s", chars64);
+    clear_buffer();
+    if('.' != chars64[0])
+    {
+        memmove(&((*pperson).fname), chars64, 64);    
+    }
+
+    printf("Nachname       [%s]: ", (*pperson).sname);
+    scanf("%s", chars64);
+    clear_buffer();
+    if('.' != chars64[0])
+    {
+        memmove(&((*pperson).sname), chars64, 64);    
+    }
+
+    printf("Telephonnummer [%s]: ", (*pperson).telephone);
+    scanf("%s", chars24);
+    clear_buffer();
+    if('.' != chars24[0])
+    {
+        memmove(&((*pperson).telephone), chars24, 24);    
+    }
+
+    printf("Emailadresse   [%s]: ", (*pperson).email);
+    scanf("%s", chars256);
+    clear_buffer();
+    if('.' != chars256[0])
+    {
+        memmove(&((*pperson).email), chars256, 256);    
+    }
+
+    printf("Strasse 1      [%s]: ", (*pperson).address.street_address_l1);
+    scanf("%s", chars64);
+    clear_buffer();
+    if('.' != chars64[0])
+    {
+        memmove(&((*pperson).address.street_address_l1), chars64, 64);    
+    }
+
+    printf("Strasse 2      [%s]: ", (*pperson).address.street_address_l2);
+    scanf("%s", chars64);
+    clear_buffer();
+    if('.' != chars64[0])
+    {
+        memmove(&((*pperson).address.street_address_l2), chars64, 64);    
+    }
+
+    printf("Stadt          [%s]: ", (*pperson).address.city);
+    scanf("%s", chars64);
+    clear_buffer();
+    if('.' != chars64[0])
+    {
+        memmove(&((*pperson).address.city), chars64, 64);    
+    }
+
+    printf("Land           [%s]: ", (*pperson).address.country);
+    scanf("%s", chars64);
+    clear_buffer();
+    if('.' != chars64[0])
+    {
+        memmove(&((*pperson).address.country), chars64, 64);    
+    }
+
+    printf("Staat          [%s]: ", (*pperson).address.state);
+    scanf("%s", chars64);
+    clear_buffer();
+    if('.' != chars64[0])
+    {
+        memmove(&((*pperson).address.state), chars64, 64);    
+    }
+
+    printf("Postleitzahl   [%s]: ", (*pperson).address.postal_code);
+    scanf("%s", chars24);
+    clear_buffer();
+    if('.' != chars24[0])
+    {
+        memmove(&((*pperson).address.postal_code), chars24, 24);    
+    }
+
+    return person;
 }
 
-bool show_p(const PERSON *person)
+void show_p(const PERSON *person)
 {
+    printf("Vorname       : %s\n", (*pperson).fname);
 
+    printf("Nachname      : %s\n", (*pperson).sname);
+
+    printf("Telephonnummer: %s\n", (*pperson).telephone);
+
+    printf("Emailadresse  : %s\n", (*pperson).email);
+
+    printf("Strasse 1     : %s\n", (*pperson).address.street_address_l1);
+
+    printf("Strasse 2     : %s\n", (*pperson).address.street_address_l2);
+
+    printf("Stadt         : %s\n", (*pperson).address.city);
+
+    printf("Land          : %s\n", (*pperson).address.country);
+
+    printf("Staat         : %s\n", (*pperson).address.state);
+
+    printf("Postleitzahl  : %s\n", (*pperson).address.postal_code);
 }
 
 void clear_buffer()
