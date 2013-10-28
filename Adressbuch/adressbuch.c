@@ -40,6 +40,11 @@ void help(void)
     printf("mod index - Aendert die Person am angegebenen Index.\n");
     printf("show index- Zeigt alle Daten zu der Person am angegebenen Index.\
         \n");
+    printf("quit      - Beendet das Programm\n");
+}
+
+bool input(void)
+{
 
 }
 
@@ -134,7 +139,7 @@ bool remove_p(size_t *p_size, PERSON **people, PERSON *person)
                                   //geloescht
 }
 
-PERSON* modify_p(size_t *p_size, PERSON *person)
+void modify_p(size_t *p_size, PERSON *person)
 {   
     char chars24[24];
     char chars64[64];
@@ -222,8 +227,6 @@ PERSON* modify_p(size_t *p_size, PERSON *person)
     {
         memmove(&((*person).address.postal_code), chars24, 24);    
     }
-
-    return person;
 }
 
 void show_p(const PERSON *person)

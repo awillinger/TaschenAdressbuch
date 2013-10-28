@@ -39,54 +39,54 @@ typedef struct
 
 /*! \brief listet die Namen der Personen
  *
- * \param 
+ * \param p_size Anzahl an Personen die in people gespeichert sind
  *
- * \param
+ * \param Array in dem die Personen gespeichert werden
  */
 void list_p(const size_t p_size, const PERSON **people);
 
 /*! \brief liest einen neuen Eintrag von der Commanline ein
  *
- * \param
+ * \param p_size Anzahl an Personen die in people gespeichert sind
  *
- * \param
+ * \param people Array in dem die Personen gespeichert werden
  *
- * \return
+ * \return Pointer auf die neu eingetragene Person
  */
 PERSON* readin_p(size_t *p_size, PERSON **people);
 
 /*! \brief entfernt eine Person aus dem Adressbuch
  *
- * \param
+ * \param p_size Anzahl an Personen die in people gespeichert sind
  *
- * \param
+ * \param people Array in dem die Personen gespeichert werden
  *
- * \param
+ * \param person Person die entfernt werden soll
  *
- * \return
+ * \return TRUE wenn erfolgreich eine Person geloescht wurde
  */
 bool remove_p(size_t *p_size, PERSON **people, PERSON *person);
 
 /*! \brief aendert eine Person, fragt Benutzer nach aenderungswuenschen
  *
- * \param
- *
- * \param
- *
- * \return
+ * \param person Person die geaendet werden soll
  */
-PERSON* modify_p(size_t *p_size, PERSON *person);
+void modify_p(PERSON *person);
 
 /*! \brief zeigt alle Daten zu einer Person an
  *
- * \param
+ * \param person Person von der alle Informationen gezeigt werden sollen
  */
 void show_p(const PERSON *person);
 
-/*! \brief zeigt alle Daten zu einer Person an
- *
- */
+/*! \brief Zeigt eine Hilfestellung zur benutzung des Programmes an */
 void help(void);
+
+/*! \brief Fragt den Benutzer welche Aktion er durchfuehren will
+ *
+ * \return TRUE wenn der Benutzer das Programm beenden will
+ */
+bool input(void);
 
 /*! \brief buffer leeren */
 void clear_buffer(void);
