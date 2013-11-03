@@ -14,15 +14,18 @@
 int main(int argc, char** argv)
 {
     PERSON **people = NULL;
+    people = malloc(0);
+
     size_t p_size = 0;
     bool stop = FALSE;
-    readin_p(&p_size, people);
+    //readin_p(&p_size, people);
 
     printf("Was wollen sie machen?\n");
     help();
     while(!stop)
     {
-
+        printf("[h 0|l 0|a 0|r index|m index|s index|q 0]\n");
+        stop = input(&p_size, people);
         printf("\n");
     }
     return EXIT_SUCCESS;
@@ -30,23 +33,26 @@ int main(int argc, char** argv)
 
 void help(void)
 {
-    printf("[ Hilfe ]\n");
-    printf("Diese Befehle stehen zur verfuegung:\n");
-    printf("Help      - Zeigt diese Hilfestellung an.\n");
-    printf("List      - Listet alle eingetragenen Personen auf und zeigt \
-        ihren Index an.\n");
-    printf("Add       - Fuegt eine neue Person hinzu.\n");
-    printf("Rm index  - Entfernt die Person am angegebenen Index.\n");
-    printf("Mod index - Aendert die Person am angegebenen Index.\n");
-    printf("Show index- Zeigt alle Daten zu der Person am angegebenen Index.\
-        \n");
-    printf("Quit      - Beendet das Programm\n");
+    printf("                                  [ Hilfe ]\n");
+    printf("=============================================================================\n");
+    printf("                     Diese Befehle stehen zur verfuegung:\n");
+    printf("-----------------------------------------------------------------------------\n");
+    printf("Help     0 - Zeigt diese Hilfestellung an.\n");
+    printf("List     0 - Listet alle eingetragenen Personen auf und zeigt ihren Index an.\n");
+    printf("Add      0 - Fuegt eine neue Person hinzu.\n");
+    printf("Rm   index - Entfernt die Person am angegebenen Index.\n");
+    printf("Mod  index - Aendert die Person am angegebenen Index.\n");
+    printf("Show index - Zeigt alle Daten zu der Person am angegebenen Index.\n");
+    printf("Quit     0 - Beendet das Programm\n");
+    printf("-----------------------------------------------------------------------------\n");
+    printf("\n");
 }
 
 bool input(size_t *p_size, PERSON **people)
 {
     char input_string[5];
     int index;
+    //muss doch irgendwie moeglich sein die eingabe der zahl optional zu machen
     scanf("%s %d", input_string, &index);
     clear_buffer();
     switch(input_string[0])
@@ -139,8 +145,8 @@ PERSON* readin_p(size_t *p_size, PERSON **people)
     clear_buffer();
 
     //pperson zu people hinzufuegen
-    people = realloc(people, sizeof(people) * ((int)++p_size));
-    people[(int)p_size-1] = pperson; //Im Falle einer Seg Fault hier suchen
+    people = realloc(people, sizeof(void*) * ((int)++(*p_size)));
+    people[(int)(*p_size)-1] = pperson; //Im Falle einer Seg Fault hier suchen
 
     return pperson;
 }
