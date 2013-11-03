@@ -86,7 +86,7 @@ void help(void);
  *
  * \return TRUE wenn der Benutzer das Programm beenden will
  */
-bool input(void);
+bool input(const size_t p_size, PERSON **people);
 
 /*! \brief buffer leeren */
 void clear_buffer(void);

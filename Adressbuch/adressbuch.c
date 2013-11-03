@@ -32,20 +32,47 @@ void help(void)
 {
     printf("[ Hilfe ]\n");
     printf("Diese Befehle stehen zur verfuegung:\n");
-    printf("help      - Zeigt diese Hilfestellung an.\n");
-    printf("list      - Listet alle eingetragenen Personen auf und zeigt \
+    printf("Help      - Zeigt diese Hilfestellung an.\n");
+    printf("List      - Listet alle eingetragenen Personen auf und zeigt \
         ihren Index an.\n");
-    printf("add       - Fuegt eine neue Person hinzu.\n");
-    printf("rm index  - Entfernt die Person am angegebenen Index.\n");
-    printf("mod index - Aendert die Person am angegebenen Index.\n");
-    printf("show index- Zeigt alle Daten zu der Person am angegebenen Index.\
+    printf("Add       - Fuegt eine neue Person hinzu.\n");
+    printf("Rm index  - Entfernt die Person am angegebenen Index.\n");
+    printf("Mod index - Aendert die Person am angegebenen Index.\n");
+    printf("Show index- Zeigt alle Daten zu der Person am angegebenen Index.\
         \n");
-    printf("quit      - Beendet das Programm\n");
+    printf("Quit      - Beendet das Programm\n");
 }
 
-bool input(void)
+bool input(const size_t p_size, PERSON **people)
 {
-
+    char input_string[5];
+    int index;
+    scanf("%s %d", input_string, index)
+    clear_buffer();
+    switch(input_string[0])
+    {
+        case 'h':case 'H':case '?':
+            help();
+            break;
+        case 'l':case 'L':
+            list_p(p_size, people);
+            break;
+        case 'a':case 'A':
+            readin_p(p_size, people);
+            break;
+        case 'r':case 'R':
+            remove_p(p_size, people, people[index]);
+            break;
+        case 'm':case 'M':
+            modify_p(people[index]);
+            break;
+        case 's':case 'S':
+            show_p(people[index]);
+            break;
+        case 'q':case 'Q':
+            return TRUE;
+    }
+    return FALSE; //Benutzer will das Programm nicht beenden
 }
 
 void list_p(const size_t p_size, const PERSON **people)
@@ -139,7 +166,7 @@ bool remove_p(size_t *p_size, PERSON **people, PERSON *person)
                                   //geloescht
 }
 
-void modify_p(size_t *p_size, PERSON *person)
+void modify_p(PERSON *person)
 {   
     char chars24[24];
     char chars64[64];
