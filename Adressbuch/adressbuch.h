@@ -43,7 +43,7 @@ typedef struct
  *
  * \param Array in dem die Personen gespeichert werden
  */
-void list_p(const size_t p_size, const PERSON **people);
+void list_p(const size_t p_size, PERSON **people);
 
 /*! \brief liest einen neuen Eintrag von der Commanline ein
  *
@@ -86,7 +86,7 @@ void help(void);
  *
  * \return TRUE wenn der Benutzer das Programm beenden will
  */
-bool input(const size_t p_size, PERSON **people);
+bool input(size_t *p_size, PERSON **people);
 
 /*! \brief buffer leeren */
 void clear_buffer(void);

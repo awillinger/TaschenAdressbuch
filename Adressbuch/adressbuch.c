@@ -43,11 +43,11 @@ void help(void)
     printf("Quit      - Beendet das Programm\n");
 }
 
-bool input(const size_t p_size, PERSON **people)
+bool input(size_t *p_size, PERSON **people)
 {
     char input_string[5];
     int index;
-    scanf("%s %d", input_string, index)
+    scanf("%s %d", input_string, &index);
     clear_buffer();
     switch(input_string[0])
     {
@@ -55,7 +55,7 @@ bool input(const size_t p_size, PERSON **people)
             help();
             break;
         case 'l':case 'L':
-            list_p(p_size, people);
+            list_p(*p_size, people);
             break;
         case 'a':case 'A':
             readin_p(p_size, people);
@@ -75,7 +75,7 @@ bool input(const size_t p_size, PERSON **people)
     return FALSE; //Benutzer will das Programm nicht beenden
 }
 
-void list_p(const size_t p_size, const PERSON **people)
+void list_p(const size_t p_size, PERSON **people)
 {
     size_t i;
     for(i = 0; i < p_size; ++i)
