@@ -116,7 +116,9 @@ Ablauf Test
 ----------
 Test Daten
 ----------
-..
+
+.. code::
+
     Homer
     Simpson
     (939)555-0113
@@ -128,7 +130,8 @@ Test Daten
     Tennessee
     37172
 
-..
+.. code::
+
     SpongeBob
     SquarePants
     177-664-3262 
@@ -140,7 +143,8 @@ Test Daten
     Bikini Atoll
     96960
 
-..  
+.. code::
+
     $ ./a.out 
     Was wollen sie machen?
                                       [ Hilfe ]
@@ -155,10 +159,10 @@ Test Daten
     Show index - Zeigt alle Daten zu der Person am angegebenen Index.
     Quit     0 - Beendet das Programm
     -----------------------------------------------------------------------------
-
+    
     [h 0|l 0|a 0|r index|m index|s index|q 0]
     l 0
-
+    
     [h 0|l 0|a 0|r index|m index|s index|q 0]
     r -1
     Index out of Bound
@@ -247,6 +251,7 @@ Zeitaufzeichnung
 ~~~~~~~~~~~~~~~~
 +----------------------------+--------------+---------+---------+-----------+
 | Task                       | Date         | From    | To      | Duration  |
++----------------------------+--------------+---------+---------+-----------+
 |                            | [YYYY-MM-DD] | [HH:MM] | [HH:MM] |    [H:MM] |
 +============================+==============+=========+=========+===========+
 | Structs                    |  2013-10-18  |  09:50  |  10:10  |     0:20  |
