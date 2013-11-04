@@ -117,7 +117,7 @@ Ablauf Test
 Test Daten
 ----------
 
-.. code::
+.. code:: text
 
     Homer
     Simpson
@@ -130,7 +130,7 @@ Test Daten
     Tennessee
     37172
 
-.. code::
+.. code:: text
 
     SpongeBob
     SquarePants
@@ -143,7 +143,7 @@ Test Daten
     Bikini Atoll
     96960
 
-.. code::
+.. code:: text
 
     $ ./a.out 
     Was wollen sie machen?
