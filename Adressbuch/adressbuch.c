@@ -67,13 +67,22 @@ bool input(size_t *p_size, PERSON **people)
             readin_p(p_size, people);
             break;
         case 'r':case 'R':
-            remove_p(p_size, people, people[index]);
+            if(index >= 0 && index < *p_size)
+                remove_p(p_size, people, people[index]);
+            else
+                printf("Index out of Bound\n");
             break;
         case 'm':case 'M':
-            modify_p(people[index]);
+            if(index >= 0 && index < *p_size)
+                modify_p(people[index]);
+            else
+                printf("Index out of Bound\n");
             break;
         case 's':case 'S':
-            show_p(people[index]);
+            if(index >= 0 && index < *p_size)
+                show_p(people[index]);
+            else
+                printf("Index out of Bound\n");
             break;
         case 'q':case 'Q':
             return TRUE;
