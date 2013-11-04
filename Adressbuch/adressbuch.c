@@ -95,11 +95,11 @@ void list_p(const size_t p_size, PERSON **people)
     size_t i;
     for(i = 0; i < p_size; ++i)
     {
-        if(*(people+i) != NULL 
-        &&  (*(people+i))->fname != NULL 
-        &&  (*(people+i))->sname != NULL)
+        if(people[i] != NULL 
+        &&  people[i]->fname != NULL 
+        &&  people[i]->sname != NULL)
         {
-            printf("[%zu] %s %s\n", i, (*people+i)->fname, (*people+i)->sname);
+            printf("[%zu] %s %s\n", i, people[i]->fname, people[i]->sname);
         }
     }
 }
